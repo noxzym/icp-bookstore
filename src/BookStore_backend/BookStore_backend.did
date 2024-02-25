@@ -1,3 +1,14 @@
 service: () -> {
-    greet: (text) -> (text) query;
+    addBook: (text, int) -> (record {id:principal; title:text; price:int});
+    addToCart: (principal, principal) -> (variant {Ok:record {id:principal; username:text; balance:int; cart:vec principal; createdAt:nat64}; Err:variant {insufficientBalance:text; accountDoesNotExist:principal; bookDoesNotExist:principal}});
+    checkout: (principal) -> (variant {Ok:record {id:principal; username:text; balance:int; cart:vec principal; createdAt:nat64}; Err:variant {insufficientBalance:text; accountDoesNotExist:principal; bookDoesNotExist:principal}});
+    createAccount: (text, int) -> (record {id:principal; username:text; balance:int; cart:vec principal; createdAt:nat64});
+    getAccount: (principal) -> (opt record {id:principal; username:text; balance:int; cart:vec principal; createdAt:nat64}) query;
+    getAccounts: () -> (vec record {id:principal; username:text; balance:int; cart:vec principal; createdAt:nat64}) query;
+    getBook: (principal) -> (opt record {id:principal; title:text; price:int}) query;
+    getBooks: () -> (vec record {id:principal; title:text; price:int}) query;
+    getCart: (principal) -> (variant {Ok:vec record {id:principal; title:text; price:int}; Err:variant {insufficientBalance:text; accountDoesNotExist:principal; bookDoesNotExist:principal}}) query;
+    removeAccount: (principal) -> (variant {Ok:record {id:principal; username:text; balance:int; cart:vec principal; createdAt:nat64}; Err:variant {insufficientBalance:text; accountDoesNotExist:principal; bookDoesNotExist:principal}});
+    removeFromCart: (principal, principal) -> (variant {Ok:record {id:principal; username:text; balance:int; cart:vec principal; createdAt:nat64}; Err:variant {insufficientBalance:text; accountDoesNotExist:principal; bookDoesNotExist:principal}});
+    updateBalance: (principal, int) -> (variant {Ok:record {id:principal; username:text; balance:int; cart:vec principal; createdAt:nat64}; Err:variant {insufficientBalance:text; accountDoesNotExist:principal; bookDoesNotExist:principal}});
 }

@@ -1,0 +1,20 @@
+{
+    "canisters": {
+        "BookStore_backend": {
+            "build": "npx azle BookStore_backend",
+            "candid": "src/BookStore_backend/BookStore_backend.did",
+            "gzip": true,
+            "main": "src/BookStore_backend/src/index.ts",
+            "type": "custom",
+            "wasm": ".azle/BookStore_backend/BookStore_backend.wasm"
+        }
+    },
+    "defaults": {
+        "build": {
+            "args": "",
+            "packtool": ""
+        }
+    },
+    "output_env_file": ".env",
+    "version": 1
+}
